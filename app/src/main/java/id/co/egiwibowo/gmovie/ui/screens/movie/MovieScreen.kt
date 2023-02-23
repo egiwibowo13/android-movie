@@ -1,6 +1,8 @@
 package id.co.egiwibowo.gmovie.ui.screens.movie
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.*
@@ -59,6 +61,7 @@ fun MovieContent(
     Column(
         modifier = Modifier
             .padding(paddingValues)
+            .verticalScroll(rememberScrollState())
             .fillMaxSize()
     ) {
         Box(modifier = Modifier
@@ -81,8 +84,15 @@ fun MovieContent(
                 } ?: ""
             )
         }
+        SectionFavorite(
+            modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 16.dp),
+            isFavorite = uiState.value.isFavorite,
+            onClick = {
+                viewModel.onClickFavorite()
+            }
+        )
         SectionOverview(
-            modifier = Modifier.padding(horizontal = 16.dp, vertical = 16.dp),
+            modifier = Modifier.padding(horizontal = 16.dp),
             overview = uiState.value.movie?.overview ?: ""
         )
         ResourceViewState(
@@ -93,7 +103,10 @@ fun MovieContent(
             }}
         ) {
             Column(modifier = Modifier.padding(horizontal = 16.dp)) {
-                Text(text = stringResource(id = R.string.recommendation))
+                Text(
+                    text = stringResource(id = R.string.recommendation),
+                    style = MaterialTheme.typography.titleMedium
+                )
                 HorizontalListMovies(
                     modifier = Modifier.padding(top = 8.dp, bottom = 16.dp),
                     movies = it
@@ -101,12 +114,6 @@ fun MovieContent(
                     navToMovie(movieItem.id)
                 }
             }
-        }
-
-        Button(onClick = {
-            viewModel.onClickFavorite()
-        }) {
-            Text(text = stringResource(id = R.string.save))
         }
     }
 }

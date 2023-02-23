@@ -1,5 +1,6 @@
 package id.co.egiwibowo.gmovie.ui.screens.movie
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -71,6 +72,7 @@ class MovieViewModel @Inject constructor(
     fun checkIsFavorite(id: Long) {
         viewModelScope.launch {
             val isFavorite = useCase.checkIsFavoriteMovie(id)
+            Log.d("checkIsFavorite", isFavorite.toString())
             _uiState.value = _uiState.value.copy(isFavorite = isFavorite)
         }
     }

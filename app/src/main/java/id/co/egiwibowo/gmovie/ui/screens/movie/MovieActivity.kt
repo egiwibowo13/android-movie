@@ -27,25 +27,12 @@ class MovieActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val uri: Uri? = intent.data
-        val action = intent.action
-        if (action == Intent.ACTION_VIEW && uri != null) {
-            val spPath = uri.path?.split("/")
-            val movieId: Long? = spPath?.get(spPath.size - 1)?.toLong()
-            movieId?.let {
-                viewModel.setMovieId(it)
-                viewModel.observeMovie(it)
-                viewModel.checkIsFavorite(it)
-                viewModel.observeRecommendationMovies(it)
-            }
-        } else {
-            val movieId = intent.extras?.getLong(MOVIE_ID)
-            movieId?.let {
-                viewModel.setMovieId(it)
-                viewModel.observeMovie(it)
-                viewModel.checkIsFavorite(it)
-                viewModel.observeRecommendationMovies(it)
-            }
+        val movieId: Long? = getMovieId()
+        movieId?.let {
+            viewModel.setMovieId(it)
+            viewModel.observeMovie(it)
+            viewModel.checkIsFavorite(it)
+            viewModel.observeRecommendationMovies(it)
         }
 
         setContent {
@@ -56,6 +43,17 @@ class MovieActivity : AppCompatActivity() {
                     goBack = { finish() }
                 )
             }
+        }
+    }
+
+    fun getMovieId(): Long? {
+        val uri: Uri? = intent.data
+        val action = intent.action
+        return if (action == Intent.ACTION_VIEW && uri != null) {
+            val spPath = uri.path?.split("/")
+            spPath?.get(spPath.size - 1)?.toLong()
+        } else {
+            intent.extras?.getLong(MOVIE_ID)
         }
     }
 

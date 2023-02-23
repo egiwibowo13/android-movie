@@ -2,6 +2,7 @@ package id.co.egiwibowo.gmovie.ui.components
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -15,7 +16,10 @@ fun SectionOverview(
     overview: String
 ) {
     Column(modifier = modifier) {
-        Text(text = stringResource(id = R.string.overview))
+        Text(
+            text = stringResource(id = R.string.overview),
+            style = MaterialTheme.typography.titleMedium
+        )
         Text(text = overview, modifier = Modifier.padding(top = 8.dp))
     }
 }

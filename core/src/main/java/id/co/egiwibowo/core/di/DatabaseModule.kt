@@ -17,7 +17,9 @@ class DatabaseModule {
 
     @Singleton
     @Provides
-    fun provideDatabase(@ApplicationContext context: Context): GMovieDatabase = Room.databaseBuilder(
+    fun provideDatabase(
+        @ApplicationContext context: Context
+    ): GMovieDatabase = Room.databaseBuilder(
         context,
         GMovieDatabase::class.java, "GMovie.db"
     ).fallbackToDestructiveMigration().build()

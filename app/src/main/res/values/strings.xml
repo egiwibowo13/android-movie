@@ -19,4 +19,5 @@
 
     <string name="recommendation">Recommendation</string>
     <string name="save">Save</string>
+    <string name="add_to_favorite">Tambahkan ke Favorite</string>
 </resources>

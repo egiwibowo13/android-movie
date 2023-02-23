@@ -7,6 +7,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.google.accompanist.placeholder.placeholder
 
@@ -21,7 +22,8 @@ fun CardMovie(
         .padding(10.dp)
         .clickable(enabled = !loading) {
             onClick()
-        }) {
+        }
+    ) {
         AsyncImage(
             modifier = Modifier
                 .fillMaxWidth()
@@ -35,7 +37,10 @@ fun CardMovie(
         Text(text = title, modifier = Modifier
             .fillMaxWidth()
             .padding(top = 8.dp)
-            .placeholder(visible = loading, color = Color.LightGray))
+            .placeholder(visible = loading, color = Color.LightGray),
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis
+        )
     }
 }
 
@@ -66,10 +71,12 @@ fun CardMovieSmall(
         )
         Text(text = title,
             modifier = Modifier
-            .width(150.dp)
-            .padding(top = 8.dp)
-            .placeholder(visible = loading, color = Color.LightGray),
-            style = MaterialTheme.typography.bodyMedium
+                .width(150.dp)
+                .padding(top = 8.dp)
+                .placeholder(visible = loading, color = Color.LightGray),
+            style = MaterialTheme.typography.bodyMedium,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis
         )
     }
 }

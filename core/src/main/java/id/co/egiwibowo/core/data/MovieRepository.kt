@@ -1,6 +1,5 @@
 package id.co.egiwibowo.core.data
 
-import android.util.Log
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
@@ -45,8 +44,9 @@ class MovieRepository @Inject constructor(
     }
 
     override fun getRecommendationMovies(movieId: Long): Flow<List<MovieItem>> {
-        Log.d("getRecommendationMovies", movieId.toString())
-        return remote.getRecommendation(movieId = movieId).map { it.map(MovieItemDTOResponse::toDomain) }
+        return remote.getRecommendation(movieId = movieId).map {
+            it.map(MovieItemDTOResponse::toDomain)
+        }
     }
 
     override fun getPagingMovies(type: TypeMovies): Flow<PagingData<MovieItem>> {

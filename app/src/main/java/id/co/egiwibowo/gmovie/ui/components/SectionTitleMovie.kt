@@ -1,6 +1,7 @@
 package id.co.egiwibowo.gmovie.ui.components
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -33,7 +34,7 @@ fun SectionTitleMovie(
             loading = loading
         )
         Column(modifier = modifierContainerTitle.padding(start = 8.dp, end = 16.dp)) {
-            Text(text = title)
+            Text(text = title, style = MaterialTheme.typography.titleMedium)
             Text(text = stringResource(R.string.release_date, releaseDate))
             Text(text = genres)
         }

@@ -69,11 +69,19 @@ class MainActivity : AppCompatActivity() {
             val request = requestSplitInstall(moduleName)
             splitInstallManager.startInstall(request)
                 .addOnSuccessListener {
-                    Toast.makeText(this, getString(R.string.install_module_success), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        this,
+                        getString(R.string.install_module_success),
+                        Toast.LENGTH_SHORT
+                    ).show()
                     action()
                 }
                 .addOnFailureListener {
-                    Toast.makeText(this, getString(R.string.install_module_failure), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        this,
+                        getString(R.string.install_module_failure),
+                        Toast.LENGTH_SHORT
+                    ).show()
                     installFailed()
                 }
         }

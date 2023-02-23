@@ -8,9 +8,8 @@ import id.co.egiwibowo.core.domain.models.MovieItem
 import id.co.egiwibowo.core.domain.usecases.MovieUseCase
 import kotlinx.coroutines.flow.Flow
 
-//@HiltViewModel
 class FavoriteViewModel constructor(
-    private val useCase: MovieUseCase,
+    useCase: MovieUseCase,
 ): ViewModel() {
 
     val pagingDataFlow: Flow<PagingData<MovieItem>> = useCase.getPagingFavoriteMovies()
