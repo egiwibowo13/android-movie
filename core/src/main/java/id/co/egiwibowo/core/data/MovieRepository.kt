@@ -10,7 +10,6 @@ import id.co.egiwibowo.core.data.source.local.entities.toDomainItem
 import id.co.egiwibowo.core.data.source.local.entities.toEntity
 import id.co.egiwibowo.core.data.source.remote.MoviesPagingSource
 import id.co.egiwibowo.core.data.source.remote.RemoteDataSource
-import id.co.egiwibowo.core.data.source.remote.network.ApiService
 import id.co.egiwibowo.core.data.source.remote.reponse.MovieDTOResponse
 import id.co.egiwibowo.core.data.source.remote.reponse.MovieItemDTOResponse
 import id.co.egiwibowo.core.data.source.remote.reponse.toDomain
@@ -25,7 +24,6 @@ import javax.inject.Inject
 class MovieRepository @Inject constructor(
     private val local: LocalDataSource,
     private val remote: RemoteDataSource,
-    private val service: ApiService,
 ): IMovieRepository {
     override fun getNowPlayingMovies(page: Int): Flow<List<MovieItem>> {
         return remote.getNowPlayingMovies(page).map { it.map(MovieItemDTOResponse::toDomain) }
@@ -55,7 +53,7 @@ class MovieRepository @Inject constructor(
                 pageSize = 10,
             ),
             pagingSourceFactory = {
-                MoviesPagingSource(service, type)
+                MoviesPagingSource(remote, type)
             }
         ).flow.map { paging ->
             paging.map(MovieItemDTOResponse::toDomain)

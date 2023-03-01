@@ -28,19 +28,6 @@ fun MovieEntity.toDomainItem(): MovieItem {
     )
 }
 
-fun MovieEntity.toDomain(): Movie {
-    return Movie(
-        id = id,
-        title = title,
-        overview = overview,
-        releaseDate = releaseDate,
-        voteAverage = 0,
-        voteCount = 0,
-        posterPath = posterPath,
-        backdropPath = backdropPath,
-        genres = genres
-    )
-}
 
 fun Movie.toEntity(): MovieEntity {
     return MovieEntity(
