@@ -16,7 +16,7 @@ fun <T> Flow<T>.asResource(): Flow<Resource<T>> {
         }
         .retryWhen { cause, _ ->
             if (cause is IOException) {
-                emit(Resource.Error(throwable = cause, message = cause.message))
+                emit(Resource.Error(throwable = cause))
 
                 delay(RETRY_TIME_IN_MILLIS)
                 true
@@ -24,5 +24,5 @@ fun <T> Flow<T>.asResource(): Flow<Resource<T>> {
                 false
             }
         }
-        .catch { emit(Resource.Error(throwable = it, message = it.message)) }
+        .catch { emit(Resource.Error(throwable = it)) }
 }

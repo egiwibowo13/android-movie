@@ -14,12 +14,14 @@ import com.google.accompanist.placeholder.placeholder
 
 @Composable
 fun AsyncImage(
-    modifier: Modifier = Modifier.width(100.dp).height(100.dp),
+    modifier: Modifier = Modifier,
     imageUrl: String,
     loading: Boolean = false,
 ) {
     SubcomposeAsyncImage(
         modifier = modifier
+            .width(100.dp)
+            .height(100.dp)
             .placeholder(
                 visible = loading,
                 color = Color.LightGray

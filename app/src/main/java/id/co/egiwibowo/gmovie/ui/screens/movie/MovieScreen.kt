@@ -102,7 +102,7 @@ fun MovieContent(
                 viewModel.onRetryRecommendation()
             }}
         ) {
-            Column(modifier = Modifier.padding(horizontal = 16.dp)) {
+            Column(modifier = Modifier.padding(horizontal = 16.dp, vertical = 16.dp)) {
                 Text(
                     text = stringResource(id = R.string.recommendation),
                     style = MaterialTheme.typography.titleMedium

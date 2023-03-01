@@ -46,7 +46,7 @@ class MovieActivity : AppCompatActivity() {
         }
     }
 
-    fun getMovieId(): Long? {
+    private fun getMovieId(): Long? {
         val uri: Uri? = intent.data
         val action = intent.action
         return if (action == Intent.ACTION_VIEW && uri != null) {

@@ -6,7 +6,7 @@ import androidx.room.TypeConverters
 import id.co.egiwibowo.core.data.source.local.entities.GenreDataConverter
 import id.co.egiwibowo.core.data.source.local.entities.MovieEntity
 
-@Database(entities = [MovieEntity::class], version = 4, exportSchema = false)
+@Database(entities = [MovieEntity::class], version = 5, exportSchema = false)
 @TypeConverters(GenreDataConverter::class)
 abstract class GMovieDatabase: RoomDatabase()  {
     abstract fun getMovieDao(): MovieDao

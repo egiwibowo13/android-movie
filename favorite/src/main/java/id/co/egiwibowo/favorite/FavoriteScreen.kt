@@ -79,12 +79,12 @@ fun FavoriteContent(
                     CardMovie(loading = true)
                 },
                 refreshError = {
-                    DiscoverSectionError() {
+                    DiscoverSectionError {
                         pagingMovies.refresh()
                     }
                 },
                 pagingError = {
-                    DiscoverSectionError() {
+                    DiscoverSectionError {
                         pagingMovies.retry()
                     }
                 }

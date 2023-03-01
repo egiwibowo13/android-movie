@@ -1,7 +1,6 @@
 package id.co.egiwibowo.core.data.source.remote.reponse
 
 import com.google.gson.annotations.SerializedName
-import id.co.egiwibowo.core.data.source.local.entities.MovieEntity
 import id.co.egiwibowo.core.domain.models.Movie
 import java.util.*
 
