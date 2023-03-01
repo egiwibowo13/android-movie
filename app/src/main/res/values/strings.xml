@@ -18,6 +18,5 @@
     <string name="install_module_failure">Error installing module</string>
 
     <string name="recommendation">Recommendation</string>
-    <string name="save">Save</string>
     <string name="add_to_favorite">Tambahkan ke Favorite</string>
 </resources>
