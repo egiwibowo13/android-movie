@@ -79,12 +79,14 @@ dependencies {
     // Integration with LiveData
     implementation 'androidx.compose.runtime:runtime-livedata'
 
-
     implementation "io.coil-kt:coil-compose:$coil_compose_version"
     implementation "com.google.accompanist:accompanist-placeholder-material:$placeholder_compose_version"
 
     //paging
     implementation "androidx.paging:paging-runtime-ktx:$paging_version"
     implementation "androidx.paging:paging-compose:$paging_compose_version"
+
+    //leakcanary
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.10'
 
 }
